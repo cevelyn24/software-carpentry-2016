@@ -170,7 +170,110 @@ fence<-function(vector.inside,vector.wrapper){
 fence(best_practice, asterisk)
 
 
+##### for loops!!!!  ############ with Mark Wilber
+list.files()
+
+#"usually when you copy and paste should be using 
+#function or a for loop
+
+analyze <- function(filename) {
+  # Plots the average, min, and max inflammation over time.
+  # Input is character string of a csv file.
+  dat <- read.csv(file = filename, header = FALSE)
+  avg_day_inflammation <- apply(dat, 2, mean)
+  plot(avg_day_inflammation)
+  max_day_inflammation <- apply(dat, 2, max)
+  plot(max_day_inflammation)
+  min_day_inflammation <- apply(dat, 2, min)
+  plot(min_day_inflammation)
+}
+
+#have to plug in and copy-paste each time...
+
+analyze("data/inflammation-01.csv")
+
+#so let's set up a for loop
+
+best_practice<-c("let", "the", "computers", "do", "the", "work")
+best_practice
+
+#function to print this as a sentence
+print_words <- function(sentence){
+  print(sentence[1])
+  print(sentence[2])
+  print(sentence[3])
+  print(sentence[4])
+  print(sentence[5])
+  print(sentence[6])
+  
+}
+
+print_words(best_practice)
+
+#can exclude elements using - symbol
+print_words(best_practice[-6])
+
+#get NA in the print out because defined function 
+#as needing to have 6 elements
+
+print_words<-function(sentence){
+  for(word in sentence){
+    print(word)
+  }
+}
+
+print_words(best_practice)
+print_words(best_practice[-6])
+
+#for loop explanation
+#for(variable in collection){
+#do operations on variable
+#}
+
+len<-0
+vowels<-c("a", "e", "i", "o", "u")
+
+for(v in vowels){
+  print(len)
+  len<-len+1}
+
+len
+
+#######loop challenge#######
+
+A<- seq(3)
+
+print_N<- function(numbers){
+  order<-seq(numbers)
+  for(x in order){
+    print(x)
+  }
+}
+
+print_N(7)
 
 
+#exponetiation#
 
+#write a function to do exponentiation
+# 2 arguments, a base and a function
+
+#look at this, Mark has code
+
+######analyzing multilpe files########
+#can use wildcards!
+
+list.files()
+Sys.glob("i*.csv") #glob is a way to grab a bunch of files
+
+#or
+list.files(pattern="inflammation")
+
+filenames<- Sys.glob("i*.csv")
+
+#run analysis on each file
+for(file in filenames){
+  print(file)
+  analyze(file)
+}
 
