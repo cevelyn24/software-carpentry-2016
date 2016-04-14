@@ -103,9 +103,74 @@ min_day_inflammation<-apply(dat,2,min)
 plot(min_day_inflammation)
 
 
-
 #use c to combine the data
 
 sd_day_inflammation<-apply(dat,2,sd)
 
 plot(sd_day_inflammation)
+
+
+###Creating functions### with Thomas C. Smith
+
+#clear work history to avoid fouling up
+#
+
+#structure allows you to see structure
+#of a function and tips to build a function
+#on your own
+str(read.csv)
+
+
+#practive function F to Kelvin
+
+temp<-67
+
+fahr_to_kelvin<- function(temp){
+  kelvin<- ((temp-32))*(5/9) + 273.15
+  return(kelvin)}
+  
+fahr_to_kelvin(67)
+fahr_to_kelvin(temp)
+  
+#combining functions
+kelvin_to_celsius<-function(temp){
+  celsius<-temp-273.15
+  return(celsius)
+}
+  
+kelvin_to_celsius(292.5944)  
+  
+  
+#now combine the functions to bring
+#fahrenheit to celsius
+
+fahr_to_celsius<- function(temp){
+  temp_k<-fahr_to_kelvin(temp)
+  result<- kelvin_to_celsius(temp_k)
+  return(result)
+}
+
+fahr_to_celsius(67)
+
+#create a function challenge
+
+best_practice <- c("Write", "programs", "for", "people", "not", "computers")
+asterisk <- "***"  # R interprets a variable with a single value as a vector
+# with one element.
+fence(best_practice, asterisk)
+
+fence<-(c(best_practice, asterisk))
+
+fence<-function(vector.inside,vector.wrapper){
+  fence.a<-(c(vector.inside,vector.wrapper))
+  result<- (c(vector.wrapper,fence.a))
+  return(result)
+}
+
+fence(best_practice, asterisk)
+
+
+
+
+
+
